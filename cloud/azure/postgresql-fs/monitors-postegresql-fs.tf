@@ -84,36 +84,6 @@ EOQ
   tags = concat(["env:${var.environment}", "type:cloud", "provider:azure", "resource:postgresql", "team:claranet", "created-by:terraform"], var.free_storage_extra_tags)
 }
 
-# resource "datadog_monitor" "postgresql-fs_io_consumption" {
-#   count   = var.io_consumption_enabled == "true" ? 1 : 0
-#   name    = "${var.prefix_slug == "" ? "" : "[${var.prefix_slug}]"}[${var.environment}] Postgresql Server IO consumption {{#is_alert}}{{{comparator}}} {{threshold}}% ({{value}}%){{/is_alert}}{{#is_warning}}{{{comparator}}} {{warn_threshold}}% ({{value}}%){{/is_warning}}"
-#   message = coalesce(var.io_consumption_message, var.message)
-#   type    = "query alert"
-
-#   query = <<EOQ
-#     ${var.io_consumption_time_aggregator}(${var.io_consumption_timeframe}): (
-#       avg:azure.dbforpostgresql_flexibleservers.io_consumption_percent${module.filter-tags.query_alert} by {resource_group,region,name}
-#     ) > ${var.io_consumption_threshold_critical}
-# EOQ
-
-#   monitor_thresholds {
-#     critical = var.io_consumption_threshold_critical
-#     warning  = var.io_consumption_threshold_warning
-#   }
-
-#   evaluation_delay    = var.evaluation_delay
-#   new_host_delay      = var.new_host_delay
-#   new_group_delay     = var.new_group_delay
-#   notify_no_data      = false
-#   renotify_interval   = 0
-#   notify_audit        = false
-#   timeout_h           = var.timeout_h
-#   include_tags        = true
-#   require_full_window = false
-
-#   tags = concat(["env:${var.environment}", "type:cloud", "provider:azure", "resource:postgresql", "team:claranet", "created-by:terraform"], var.io_consumption_extra_tags)
-# }
-
 resource "datadog_monitor" "postgresql-fs_memory_usage" {
   count   = var.memory_usage_enabled == "true" ? 1 : 0
   name    = "${var.prefix_slug == "" ? "" : "[${var.prefix_slug}]"}[${var.environment}] Postgresql FlexibleServer memory usage {{#is_alert}}{{{comparator}}} {{threshold}}% ({{value}}%){{/is_alert}}{{#is_warning}}{{{comparator}}} {{warn_threshold}}% ({{value}}%){{/is_warning}}"

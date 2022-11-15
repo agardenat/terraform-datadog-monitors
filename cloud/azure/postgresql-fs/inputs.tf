@@ -167,46 +167,6 @@ variable "free_storage_threshold_critical" {
   default     = "10"
 }
 
-variable "io_consumption_enabled" {
-  description = "Flag to enable PostgreSQL status monitor"
-  type        = string
-  default     = "true"
-}
-
-variable "io_consumption_extra_tags" {
-  description = "Extra tags for PostgreSQL status monitor"
-  type        = list(string)
-  default     = []
-}
-
-variable "io_consumption_message" {
-  description = "Custom message for PostgreSQL IO consumption monitor"
-  type        = string
-  default     = ""
-}
-
-variable "io_consumption_time_aggregator" {
-  description = "Monitor aggregator for PostgreSQL IO consumption [available values: min, max or avg]"
-  type        = string
-  default     = "min"
-}
-
-variable "io_consumption_timeframe" {
-  description = "Monitor timeframe for PostgreSQL IO consumption [available values: `last_#m` (1, 5, 10, 15, or 30), `last_#h` (1, 2, or 4), or `last_1d`]"
-  type        = string
-  default     = "last_15m"
-}
-
-variable "io_consumption_threshold_warning" {
-  description = "PostgreSQL IO consumption in percent (warning threshold)"
-  default     = "80"
-}
-
-variable "io_consumption_threshold_critical" {
-  description = "PostgreSQL IO consumption in percent (critical threshold)"
-  default     = "90"
-}
-
 variable "memory_usage_enabled" {
   description = "Flag to enable PostgreSQL status monitor"
   type        = string

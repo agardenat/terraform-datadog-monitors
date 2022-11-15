@@ -1,10 +1,10 @@
-# CLOUD AZURE POSTGRESQL DataDog monitors
+# CLOUD AZURE POSTGRESQL FLEXIBLESERVER DataDog monitors
 
 ## How to use this module
 
 ```hcl
-module "datadog-monitors-cloud-azure-postgresql" {
-  source      = "claranet/monitors/datadog//cloud/azure/postgresql"
+module "datadog-monitors-cloud-azure-postgresql-fs" {
+  source      = "claranet/monitors/datadog//cloud/azure/postgresql-fs"
   version     = "{revision}"
 
   environment = var.environment
@@ -17,11 +17,10 @@ module "datadog-monitors-cloud-azure-postgresql" {
 
 Creates DataDog monitors with the following checks:
 
-- Postgresql Server CPU usage
-- Postgresql Server has no connection
-- Postgresql Server IO consumption
-- Postgresql Server memory usage
-- Postgresql Server storage
+- Postgresql FlexibleServer CPU usage
+- Postgresql FlexibleServer has no connection
+- Postgresql FlexibleServer memory usage
+- Postgresql FlexibleServer storage
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -75,13 +74,6 @@ Creates DataDog monitors with the following checks:
 | <a name="input_free_storage_threshold_warning"></a> [free\_storage\_threshold\_warning](#input\_free\_storage\_threshold\_warning) | PostgreSQL Free Storage remaining in percent (warning threshold) | `string` | `"20"` | no |
 | <a name="input_free_storage_time_aggregator"></a> [free\_storage\_time\_aggregator](#input\_free\_storage\_time\_aggregator) | Monitor aggregator for PostgreSQL Free Storage [available values: min, max or avg] | `string` | `"min"` | no |
 | <a name="input_free_storage_timeframe"></a> [free\_storage\_timeframe](#input\_free\_storage\_timeframe) | Monitor timeframe for PostgreSQL Free Storage [available values: `last_#m` (1, 5, 10, 15, or 30), `last_#h` (1, 2, or 4), or `last_1d`] | `string` | `"last_15m"` | no |
-| <a name="input_io_consumption_enabled"></a> [io\_consumption\_enabled](#input\_io\_consumption\_enabled) | Flag to enable PostgreSQL status monitor | `string` | `"true"` | no |
-| <a name="input_io_consumption_extra_tags"></a> [io\_consumption\_extra\_tags](#input\_io\_consumption\_extra\_tags) | Extra tags for PostgreSQL status monitor | `list(string)` | `[]` | no |
-| <a name="input_io_consumption_message"></a> [io\_consumption\_message](#input\_io\_consumption\_message) | Custom message for PostgreSQL IO consumption monitor | `string` | `""` | no |
-| <a name="input_io_consumption_threshold_critical"></a> [io\_consumption\_threshold\_critical](#input\_io\_consumption\_threshold\_critical) | PostgreSQL IO consumption in percent (critical threshold) | `string` | `"90"` | no |
-| <a name="input_io_consumption_threshold_warning"></a> [io\_consumption\_threshold\_warning](#input\_io\_consumption\_threshold\_warning) | PostgreSQL IO consumption in percent (warning threshold) | `string` | `"80"` | no |
-| <a name="input_io_consumption_time_aggregator"></a> [io\_consumption\_time\_aggregator](#input\_io\_consumption\_time\_aggregator) | Monitor aggregator for PostgreSQL IO consumption [available values: min, max or avg] | `string` | `"min"` | no |
-| <a name="input_io_consumption_timeframe"></a> [io\_consumption\_timeframe](#input\_io\_consumption\_timeframe) | Monitor timeframe for PostgreSQL IO consumption [available values: `last_#m` (1, 5, 10, 15, or 30), `last_#h` (1, 2, or 4), or `last_1d`] | `string` | `"last_15m"` | no |
 | <a name="input_memory_usage_enabled"></a> [memory\_usage\_enabled](#input\_memory\_usage\_enabled) | Flag to enable PostgreSQL status monitor | `string` | `"true"` | no |
 | <a name="input_memory_usage_extra_tags"></a> [memory\_usage\_extra\_tags](#input\_memory\_usage\_extra\_tags) | Extra tags for PostgreSQL status monitor | `list(string)` | `[]` | no |
 | <a name="input_memory_usage_message"></a> [memory\_usage\_message](#input\_memory\_usage\_message) | Custom message for PostgreSQL memory monitor | `string` | `""` | no |
@@ -106,11 +98,10 @@ Creates DataDog monitors with the following checks:
 
 | Name | Description |
 |------|-------------|
-| <a name="output_postgresql_cpu_usage_id"></a> [postgresql\_cpu\_usage\_id](#output\_postgresql\_cpu\_usage\_id) | id for monitor postgresql\_cpu\_usage |
-| <a name="output_postgresql_free_storage_id"></a> [postgresql\_free\_storage\_id](#output\_postgresql\_free\_storage\_id) | id for monitor postgresql\_free\_storage |
-| <a name="output_postgresql_io_consumption_id"></a> [postgresql\_io\_consumption\_id](#output\_postgresql\_io\_consumption\_id) | id for monitor postgresql\_io\_consumption |
-| <a name="output_postgresql_memory_usage_id"></a> [postgresql\_memory\_usage\_id](#output\_postgresql\_memory\_usage\_id) | id for monitor postgresql\_memory\_usage |
-| <a name="output_postgresql_no_connection_id"></a> [postgresql\_no\_connection\_id](#output\_postgresql\_no\_connection\_id) | id for monitor postgresql\_no\_connection |
+| <a name="output_postgresql_cpu_usage_id"></a> [postgresql\_cpu\_usage\_id](#output\_postgresql\_cpu\_usage\_id) | id for monitor postgresql-fs\_cpu\_usage |
+| <a name="output_postgresql_free_storage_id"></a> [postgresql\_free\_storage\_id](#output\_postgresql\_free\_storage\_id) | id for monitor postgresql-fs\_free\_storage |
+| <a name="output_postgresql_memory_usage_id"></a> [postgresql\_memory\_usage\_id](#output\_postgresql\_memory\_usage\_id) | id for monitor postgresql-fs\_memory\_usage |
+| <a name="output_postgresql_no_connection_id"></a> [postgresql\_no\_connection\_id](#output\_postgresql\_no\_connection\_id) | id for monitor postgresql-fs\_no\_connection |
 <!-- END_TF_DOCS -->
 ## Related documentation
 

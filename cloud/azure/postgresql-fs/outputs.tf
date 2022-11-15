@@ -8,11 +8,6 @@ output "postgresql-fs_free_storage_id" {
   value       = datadog_monitor.postgresql-fs_free_storage.*.id
 }
 
-# output "postgresql-fs_io_consumption_id" {
-#   description = "id for monitor postgresql-fs_io_consumption"
-#   value       = datadog_monitor.postgresql-fs_io_consumption.*.id
-# }
-
 output "postgresql-fs_memory_usage_id" {
   description = "id for monitor postgresql-fs_memory_usage"
   value       = datadog_monitor.postgresql-fs_memory_usage.*.id
